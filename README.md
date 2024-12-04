@@ -1,4 +1,5 @@
 # Termux-decoration-
 .....bash
-git clone 
+bash rohan-tool.sh
 ......
+
