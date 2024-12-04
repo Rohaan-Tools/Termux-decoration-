@@ -1,34 +1,44 @@
 #!/bin/bash
 
-# Custom welcome message
-welcome_message="Welcome to Termux, Rohan! This is a custom Termux ornament."
+# Rohan-Tool Decoration Script
 
-# Custom prompt
-custom_prompt="\033[1;32mRohan@Termux: \033[0m"
+clear
 
-# Custom command execution
-execute_command() {
-    local command=$1
-    echo "Executing command: $command"
-    # Add your custom command execution logic here
-    eval "$command"
-}
+# Add a colorful header
+echo -e "\e[1;32m##########################################################"
+echo -e "\e[1;32m#                    rohan-tool                      #"
+echo -e "\e[1;32m#           A Powerful Tool for Termux Users          #"
+echo -e "\e[1;32m##########################################################"
 
-# Main function
-main() {
-    clear
-    echo -e "$welcome_message"
-    echo
+# Wait for the user to input their name or tool customization
+echo -e "\e[1;33mPlease enter your name or tool customization: "
+read user_input
 
-    while true; do
-        read -p "$custom_prompt" command
-        if [[ $command == "exit" ]]; then
-            break
-        else
-            execute_command "$command"
-        fi
-    done
-}
+# Display the user's customization
+echo -e "\e[1;34mYou have customized the tool to: $user_input"
 
-# Start the script
-main
+# Display a menu for further tool options
+echo -e "\e[1;36mSelect an option:"
+echo -e "\e[1;36m1. Start Tool"
+echo -e "\e[1;36m2. Customize Again"
+echo -e "\e[1;36m3. Exit"
+
+# User choice
+read choice
+
+case $choice in
+  1)
+    echo -e "\e[1;32mStarting the tool with your custom name: $user_input"
+    # Place the actual tool code here
+    ;;
+  2)
+    bash $0 # Restart the script for customization
+    ;;
+  3)
+    echo -e "\e[1;31mExiting the tool. Goodbye!"
+    exit
+    ;;
+  *)
+    echo -e "\e[1;31mInvalid option. Please try again."
+    ;;
+esac
